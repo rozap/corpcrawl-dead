@@ -13,10 +13,10 @@ class Parser(object):
         self.downloader = Downloader(cache_path)
         self.backend = backend
 
-    def parse(self):
+    def parse(self, years, quarters):
 
         #Get the urls of the 10K forms,
-        form_10k_urls = self.get_10k_urls()
+        form_10k_urls = self.get_10k_urls(years = years, quarters = quarters)
         self.get_10k_docs(form_10k_urls)
 
     def get_10k_urls(self, years = [2012], quarters = [1]):

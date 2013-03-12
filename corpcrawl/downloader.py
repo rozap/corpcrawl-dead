@@ -19,17 +19,17 @@ class Downloader(object):
         file_name = 'form_qtr%d.idx'% quarter
 
         try:
-            pass
+            with open(dir_name + file_name) as cached:
+                return cached.readlines()
         except IOError as e:
-            z_file = urllib2.urlopen(url % (year, quarter)).read()
+            z_file = urllib2.urlopen(url).read()
             zip_file = ZipFile(StringIO(z_file))
             if not os.path.exists(dir_name):
                 os.makedirs(dir_name)
             with open(dir_name + file_name, 'w+') as output:
                 output.write(zip_file.read('form.idx'))
-
-        with open(dir_name + file_name) as cached:
-                return cached.readlines()
+            with open(dir_name + file_name) as cached:
+                    return cached.readlines()
 
 
     def get_url(self, url):
