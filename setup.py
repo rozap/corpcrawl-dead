@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from setuptools import setup
 
-long_description = open('README').read()
+long_description = open('README.md').read()
 
 setup(name='corpcrawl',
       version='0.0.1',
