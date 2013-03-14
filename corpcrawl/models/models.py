@@ -11,7 +11,7 @@ class Company(object):
 
     def __init__(self, *args, **kwargs):
         for k in kwargs.keys():
-            self.setattr(k, kwargs[k])
+            setattr(self, k, kwargs[k])
 
 
     def __str__(self):
