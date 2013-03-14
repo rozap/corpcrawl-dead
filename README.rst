@@ -31,7 +31,7 @@ First import the required pieces
     def main()
         my_backend = MyBackend()
         crawler = CorpCrawl(cache_path = '/an/absolute/path/to/some/dir', backend = my_backend)
-        c.crawl()
+        c.crawl(years = [2011, 2012], quarters = [1, 2, 3, 4])
     
     
     class MyBackend(Backend):
@@ -48,7 +48,8 @@ First import the required pieces
             
             
 This is about as simple of a backend as can be. This code will crawl the filings and print out the name of each
-company and subsidiary that it finds. Obviously you will want to hook it up to a database or something.
+company and subsidiary that it finds for all quarters of years 2011 and 2012.
+Obviously you will want to hook it up to a database or something.
 
 # Notes
 The SEC data is very unstructured. As such, there are a lot of errors. This is version 0.0.1, so instead of
