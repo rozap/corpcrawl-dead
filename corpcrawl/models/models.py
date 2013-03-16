@@ -16,5 +16,5 @@ class Company(object):
 
     def __str__(self):
         return "Name: %s  mailing: %s \nsubs: %s" % \
-        (self.name.encode('utf-8'), self.mailing_address.encode('utf-8'), '\n'.join([sub.name.encode('utf-8') for sub in self.subsidiaries]))
+        (self.name, self.mailing_address, '\n'.join([sub.name for sub in self.subsidiaries]))
 

@@ -1,7 +1,7 @@
 from BeautifulSoup import BeautifulSoup
 import re
 import argparse
-from util.words import STATES, COUNTRIES, CORPS, PLACES, BASE_URL, EXHIBIT21_WORDS, JUNK
+from util.words import STATES, COUNTRIES, CORPS, PLACES, BASE_URL, EXHIBIT21_WORDS, JUNK, EXCLUDE_CORPS
 from models.models import Company
 from downloader import Downloader
 from util.cleaner import clean_name, clean_addr, first_letter_caps
@@ -86,7 +86,7 @@ class Parser(object):
                             #Sometimes beautifulsoup trys to concatenate a str and None?
                             pass
 
-                self.backend.add_company(company)
+                self.backend.add(company)
 
 
     def get_exhibit21(self, ex21_url):
@@ -139,7 +139,6 @@ class Parser(object):
         subsidiary = Company()
         lot = [snippet.text for snippet in lot]
         cmps = filter(lambda snippet : self.is_company(snippet), lot)
-
         for t in lot:
             s = self.get_state(t)
             if s:
@@ -162,15 +161,29 @@ class Parser(object):
             word = word.replace(j, "")
         return word
 
-    def is_company(self, word):
-        word = self.clean(word)
-        toks = word.lower().split()
+    def is_company(self, phrase):
+        phrase = self.clean(phrase).lower()
+        #TODO: think of a better wya to do this. Train it with a known data set and
+        #create a more flexible approach as opposed to a bunch of regex hax, maybe?
+        
+        #If any of the "Company" key words appear near the end of the 
+        #sentence, then this is probably a company. Not a very good approach. This is a
+        #key method to this whole project, so it should be thought out btter
+        regs = ['.*%s.{0,16}$'%c for c in CORPS]
+        unregs = ['.*%s.{0,16}$'%c for c in EXCLUDE_CORPS]
 
-        for c in CORPS:
-            for t in toks:
-                if t == c:
-                    return True
-        return False
+        res = False
+        for r in regs:
+            if re.search(r, phrase):
+                res = True
+                break
+
+        for r in unregs:
+            if re.search(r, phrase):
+                res = False
+                break
+
+        return res
 
     def get_state(self, word):
         word = self.clean(word)

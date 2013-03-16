@@ -4,7 +4,7 @@ from setuptools import setup
 long_description = open('README.rst').read()
 
 setup(name='corpcrawl',
-      version='0.0.35',
+      version='0.0.37',
       author="rozap",
       author_email="chrisd1891@gmail.com",
       license="MIT",

@@ -25,14 +25,17 @@ CORPS = map(lambda x: x.lower(), ['Inc', \
  'SRL', \
  'Pty.', \
  'Productions', \
+ 'International', \
+ 'Operations', \
  'LDC', \
  'Incorporated'])
 
+EXCLUDE_CORPS = map(lambda x: x.lower(), ['incorporation'])
 JUNK = ['Wholly-owned', 'NAME OF COMPANY', 'STATE OR COUNTRY OF INCORPORATION']
 
 
 BASE_URL = 'http://www.sec.gov'
-EXHIBIT21_WORDS = 'EX-21|Exhibit 21\.1|EXHIBIT 21.1|Exhibit 21|Subsidiaries|exhibit_21-1|SUBSIDIARIES OF THE REGISTRANT'
+EXHIBIT21_WORDS = 'EX-21|EX-21.1|Exhibit 21.1|EXHIBIT 21.1|Exhibit 21|Subsidiaries|exhibit_21-1|SUBSIDIARIES OF THE REGISTRANT'
 
 
 STATES = map(lambda x: x.lower(), ['Alabama', \
