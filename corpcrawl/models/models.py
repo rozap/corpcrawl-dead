@@ -6,10 +6,12 @@ class Company(object):
     location = None
     business_address = None
     mailing_address = None
+    exhibit21_url = None
     subsidiaries = []
 
 
     def __init__(self, *args, **kwargs):
+
         for k in kwargs.keys():
             setattr(self, k, kwargs[k])
 

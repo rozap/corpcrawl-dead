@@ -13,6 +13,8 @@ class Backend(object):
 			c.location = c.location.encode('utf-8') if c.location else None
 			c.mailing_address = c.mailing_address.encode('utf-8') if c.mailing_address else None
 			c.business_address = c.business_address.encode('utf-8') if c.business_address else None
+			c.exhibit21_url = c.exhibit21_url.encode('utf-8') if c.exhibit21_url else None
+
 			return c
 
 		company = clean_atts(company)

@@ -82,6 +82,7 @@ class Parser(object):
                         ex21_url = row.find('a').get('href')
                         try:
                             company.subsidiaries = self.get_exhibit21(BASE_URL + ex21_url)
+                            company.exhibit21_url = BASE_URL + ex21_url
                         except TypeError:
                             #Sometimes beautifulsoup trys to concatenate a str and None?
                             pass
