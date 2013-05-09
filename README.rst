@@ -1,7 +1,8 @@
 corpcrawl
 =============
 
-# About
+About
+-----
 This is a python scraper for the Securities and Exchange Commission EDGAR database. It looks at the Form 10k
 filings that publicly held corporations are required to file with the SEC. It then attempts to extract the 
 subsidiary relationships from the 10k exhibit 21.1. 
@@ -9,7 +10,8 @@ subsidiary relationships from the 10k exhibit 21.1.
 Corpcrawl is a storage agnostic scraper, so you'll need to implement your own storage scheme. 
 
 
-# Installation
+Installation
+------------
 You can get the package from PyPi through Pip. 
     
     pip install corpcrawl
@@ -20,10 +22,11 @@ From a python console you can try
     
 If it works, then you can get started
 
-# How to use
 
-## Running it
+Running it
+----------
 First import the required pieces
+
     
     from corpcrawl.crawler import CorpCrawl
     from corpcrawl.backend import Backend
@@ -51,7 +54,8 @@ This is about as simple of a backend as can be. This code will crawl the filings
 company and subsidiary that it finds for all quarters of years 2011 and 2012.
 Obviously you will want to hook it up to a database or something.
 
-# Notes
+Notes
+-----
 The SEC data is very unstructured. As such, there are a lot of errors. This is version 0.0.1, so instead of
 implementing your own methods to massage the data that it returns, it would be better if you could contribute
 so make the core parser better. 
