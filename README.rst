@@ -29,6 +29,7 @@ First import the required pieces
 
     
     from corpcrawl.crawler import CorpCrawl
+
     from corpcrawl.backend import Backend
     
     def main()
